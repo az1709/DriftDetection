@@ -2,11 +2,10 @@ output "resource_group_name" {
   value = azurerm_resource_group.rg.name
 }
 
-output "public_ip_address" {
-  value = azurerm_windows_virtual_machine.main.public_ip_address
+output "storage_account_name" {
+  value = azurerm_storage_account.sa.name
 }
 
-output "admin_password" {
-  sensitive = true
-  value     = azurerm_windows_virtual_machine.main.admin_password
+output "container_name" {
+  value = azurerm_storage_container.container.name
 }
