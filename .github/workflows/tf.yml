@@ -26,9 +26,7 @@ jobs:
 
       - name: Run yor action
         uses: bridgecrewio/yor-action@main
-        with:
-          version: 0.1.129
-          tag: git_modifiers,git_commit,git_repository,yor_trace
+        
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
