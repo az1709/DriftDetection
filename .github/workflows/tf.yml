@@ -1,3 +1,4 @@
+
 name: Terraform PR Deploy
 
 on:
@@ -7,6 +8,7 @@ on:
 
 jobs:
   terraform:
+    
     runs-on: ubuntu-latest
     name: Terraform Plan & Apply on PR (Testing Mode)
 
@@ -24,6 +26,17 @@ jobs:
 
       - name: Run yor action
         uses: bridgecrewio/yor-action@main
+      
+      - name: Checkout repo
+        uses: actions/checkout@master
+
+      - name: Run Checkov action
+        id: checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: DriftDetection/
+          file: DriftDetection/main.tf
+        
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
@@ -39,5 +52,5 @@ jobs:
       - name: Terraform Plan
         run: terraform plan -input=false -out=tfplan
 
-      - name: Terraform Apply
-        run: terraform apply -auto-approve tfplan
+      #- name: Terraform Apply
+       # run: terraform apply -auto-approve tfplan
